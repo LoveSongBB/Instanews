@@ -1,0 +1,25 @@
+// mix big phone
+
+
+// mix tablet
+
+// mix desktop
+
+
+@mixin desktop{
+    @media (min-width: $desktop-width){
+        @content;
+    }
+}
+
+@mixin tablet{
+    @media (min-width: $tablet-width){
+        @content;
+    }
+}
+
+// @mixin big-phone{
+//    @media (min-width: $big-phone-width){
+//        @content;
+//    }
+// }
