@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../../project-02/assets/fonts/OpenSans-Light.eot');
+    src: url('../../project-02/assets/fonts/OpenSans-Light.eot?#iefix') format('embedded-opentype'),
+        url('../../project-02/assets/fonts/OpenSans-Light.woff2') format('woff2'),
+        url('../../project-02/assets/fonts/OpenSans-Light.woff') format('woff'),
+        url('../../project-02/assets/fonts/OpenSans-Light.ttf') format('truetype'),
+        url('../../project-02/assets/fonts/OpenSans-Light.svg#OpenSans-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Open Sans';
+}

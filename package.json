@@ -8,6 +8,7 @@
   },
   "author": "",
   "license": "ISC",
+  "repository": "https://github.com/LoveSongBB/Instanews.git",
   "devDependencies": {
     "browser-sync": "^2.26.3",
     "eslint": "^5.12.1",

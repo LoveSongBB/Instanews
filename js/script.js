@@ -5,49 +5,58 @@ $(function () {
 }); 
 
 
-// Get data from the api and put in on our site
-
-// 118 lines ~~
-// show loading animationnn 
-//  "watch" the value change in the list - send request to API from
-//  from list menu
+$(function () {
+    console.log("Project 2!");
+});
 
 
-// parse data - append to dom 
-// show .fail
-// .always remove loading animation 
+$(document).ready(function() {
+ $("#sections").on("change", function() {
+    const section = $(this).val();
+    
 
 
-// menu - select menu - load animation - load boxes - menu is still
-// there, select menu - remove boxes - load animation - load boxes
+if (section !== " ") {
+    $(".loader img").show();
+    $("header").addClass("transform-head");
+     getStory(section);
 
-
-// sections... - empty value (home page)
-// logo top left whem boxes are there
-//  <form> <p> Choose a section:</p> <select><option><value>
-
-$(function(){
- $('|#ID').on('change', function() {
-    const yeet = $(this).val();
-//    console.log(yeet) 
-//return if value is empty
-//show loader
-// clear stories
-// make request to ajax
-// method get
-
+function getStory(section) {
 $.ajax({
-    method: 'GET'
-    url: ''
-    dataType:'json'
-}.done(function(data){
+    method: 'GET',
+    url: `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=HtMSYIqpXwtwQGBCnI7l6BL1ypk4329Z`, 
+})
 
-    // append info
-    //. fail
-    //. always 
-});
+    .done(function(data) {
+        $(".loader img").hide();
+        $("ul").empty();
 
+        let potatodata = data.results.filter(function(value) {
+            return value.multimedia.length;
+        });
+    
+        potatodata = potatodata.slice(0, 12);
+
+        for (let value of potatodata) {
+            $(".story").append(
+                `<li style='background: url(${
+                    value.multimedia[4].url
+                });background-size:cover;'>
+                <a href=${value.url}> <div class=stories-time>
+                    ${value.abstract}
+                    </div>
+                    </a>
+                    </li>`
+            );
+        }
+    })  
+
+.fail(function() {
+     $('ul').empty();
+     $('ul').append("<p>CLick harder!</p>")
+   });
+
+}
+}
 });
-});
-// http ~~ v2/{section}.json
-// ' + section + '.json?api-key=', (put in URL section)
+});   
