@@ -1,15 +1,3 @@
-
-
-$(function () {
-    console.log("Welcome to Instanews!");
-}); 
-
-
-$(function () {
-    console.log("Project 2!");
-});
-
-
 $(document).ready(function() {
  $("#sections").on("change", function() {
     const section = $(this).val();
@@ -31,22 +19,24 @@ $.ajax({
         $(".loader img").hide();
         $("ul").empty();
 
-        let potatodata = data.results.filter(function(value) {
+        let news = data.results.filter(function(value) {
             return value.multimedia.length;
         });
     
-        potatodata = potatodata.slice(0, 12);
+        news = news.slice(0, 12);
 
-        for (let value of potatodata) {
+        for (let value of news) {
             $(".story").append(
-                `<li style='background: url(${
+                `<a href=${value.url} target="_blank">
+                <li style='background: url(${
                     value.multimedia[4].url
                 });background-size:cover;'>
-                <a href=${value.url}> <div class=stories-time>
+                 <div class=stories-time><p>
                     ${value.abstract}
+                    </p>
                     </div>
-                    </a>
-                    </li>`
+                    </li>
+                    </a>`
             );
         }
     })  
