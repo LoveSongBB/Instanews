@@ -27,8 +27,8 @@ $.ajax({
 
         for (let value of news) {
             $(".story").append(
-                `<a href=${value.url} target="_blank">
-                <li style='background: url(${
+                `<div class="article"> <a href=${value.url} target="_blank">
+                <li class="article-item" style='background: url(${
                     value.multimedia[4].url
                 });background-size:cover;'>
                  <div class=stories-time><p>
@@ -36,7 +36,8 @@ $.ajax({
                     </p>
                     </div>
                     </li>
-                    </a>`
+                    </a>
+                    </div>`
             );
         }
     })  
